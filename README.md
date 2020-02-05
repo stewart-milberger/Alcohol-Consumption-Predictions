@@ -41,3 +41,12 @@ Drinking Frequency Chart:
 
 # Goal
 The goal of this project is to build a model to predict a label for a 3-class engineered feature. The three classes will correspond to drinking frequency: 0 - Never drink; 1 - drinks occasionally(at most once a month); 2 - Drinks frequently(at least once a week). 
+
+
+
+# EDA
+After selection of features, each one was split into three groups corresponding to the target value to  visualize a difference in their distributions. The feature regarding the participants education, and also the his/her religion's opinions of alcohol seemed the most promising of the behavioral fetures.
+
+INSERT PLOTS HERE
+
+
