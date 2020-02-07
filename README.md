@@ -46,7 +46,28 @@ The goal of this project is to build a model to predict a label for a 3-class en
 
 # EDA
 After selection of features, each one was split into three groups corresponding to the target value to  visualize a difference in their distributions. The feature regarding the participants education, and also the his/her religion's opinions of alcohol seemed the most promising of the behavioral fetures.
+The values here range from 1-4, corresponding to level of importance. 1 means the participant felt it is very important, though 4, menaing not important at all.
 
-INSERT PLOTS HERE
+This was the most dramatic difference between the classes of drinkers. Of those who never drink, 57% answered that how their religion views alcohol is a very important reason to abstain from consumiung alcohol, while only 12% of frequent drinkers asnwered with a 1. 
+<p align="center">
+<img src="plots/Religion_Importance.png" width="800" height="300">
+</p>
 
+Here the x-axis corresponds directly with the number of years of school completed; 12 means that he/she completed high school, and 16-17 implies completeion of undergrad school. Most people associate college with partying, so a spike in thos with a college level education is not surprising.
+<p align="center">
+<img src="plots/Years_Education.png" width="800" height="300">
+</p>
+
+
+
+![alt-text-1](plots/Unbalanced_LR.png) ![alt-text-2](plots/Balanced_LR.png)
+
+Balanced_LR.png
+Out_of_Box_GB.png
+Out_of_Box_GB_3Class.png
+
+Tuned_GB.png 	 
+Unbalanced_LR.png 
+
+tuned_GB_3Class.png
 
