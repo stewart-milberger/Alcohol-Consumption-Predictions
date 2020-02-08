@@ -49,18 +49,30 @@ After selection of features, each one was split into three groups corresponding 
 The values here range from 1-4, corresponding to level of importance. 1 means the participant felt it is very important, though 4, menaing not important at all.
 
 This was the most dramatic difference between the classes of drinkers. Of those who never drink, 57% answered that how their religion views alcohol is a very important reason to abstain from consumiung alcohol, while only 12% of frequent drinkers asnwered with a 1. 
+
 <p align="center">
 <img src="plots/Religion_Importance.png" width="800" height="300">
 </p>
 
 Here the x-axis corresponds directly with the number of years of school completed; 12 means that he/she completed high school, and 16-17 implies completeion of undergrad school. Most people associate college with partying, so a spike in thos with a college level education is not surprising.
+
 <p align="center">
 <img src="plots/Years_Education.png" width="800" height="300">
 </p>
 
 
+The initial model was a Logisitc Regression model. the intial fit on the raw, unblalanced data shows a clear unbalance among the 2 classes 
 
-![alt-text-1](plots/Unbalanced_LR.png) ![alt-text-2](plots/Balanced_LR.png)
+ <div class="row">
+  <div class="column">
+    <img src="plots/Unbalanced_LR2.png" alt="Snow" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="plots/Balanced_LR.png" alt="Forest" style="width:100%">
+  </div>
+</div> 
+
+
 
 Balanced_LR.png
 Out_of_Box_GB.png
