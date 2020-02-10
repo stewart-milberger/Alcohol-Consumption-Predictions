@@ -71,24 +71,27 @@ After processing was done, the initial model was a Logisitc Regression model. Th
 
 <div class="row">
   <div class="column">
-    <img src="plots/Unbalanced_LR2.png" alt="Snow" style="width:100%">
+    <img src="plots/Unbalanced_LR2.png" alt="Unbalanced Classes" style="width:100%">
   </div>
   <div class="column">
-    <img src="plots/Balanced_LR.png" alt="Forest" style="width:100%">
+    <img src="plots/Balanced_LR.png" alt="Balanced Classes" style="width:100%">
   </div>
 </div> 
 
 
 
 
-After the baseline was established and the 2 class model showed an acceptable level of signal, the data was then split into 3 classes: 0 for never drinks(11), 1 for occasionaly drinks(7-9), and 2 for frequently drinks(1-6). 
+After the baseline was established and the 2 class model showed an acceptable level of signal, the data was then split into 3 classes: 0 for never drinks(11), 1 for occasionaly drinks(7-9), and 2 for frequently drinks(1-6). Using balanced classes and a out-of-the-box gradient boostin model, I tested the accuracy with different values for the classes and found the best starting point for 3 classes was to split by drinking frequency 1-5, 8-9, and 11. This made a more distinct separation between classes. 
 
 
-Out_of_Box_GB.png
-Out_of_Box_GB_3Class.png
+<div class="row">
+  <div class="column">
+    <img src="plots/Out_of_Box_GB.png" alt="Standard GB" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="plots/tuned_GB_3Class.png" alt="Tubed GB" style="width:100%">
+  </div>
+</div> 
 
-Tuned_GB.png 	 
-Unbalanced_LR.png 
 
-tuned_GB_3Class.png
 
