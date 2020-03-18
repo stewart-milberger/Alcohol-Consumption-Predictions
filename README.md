@@ -2,11 +2,6 @@
 Using Alcohol Research Group NAS Datasets from 1990-2010, predict the frequency of alcohol consumption of individuals based on demographic, geographic and behavioral information. 
 
 
-Used Clustering and Random Forest in an attempt to impute the missing labels on the new behavioral features, but both model predictions had very low correlation to the test data.
-
-
-# Alcohol Consumption
-
 # Why Alcohol?
 While in the miltary 10 years ago I was exposed to(and participated in) a lot of heavy drinking. It seemed a normal activity at the time, but I noticed some surprised reactions from people when discussing alcohol consumption in a military environment and it made me question, "Is this actually normal, or is my perception of what is considered heavy drinking skewed?"
 Never having this opportunity to look at data about drinking trends, I was unable to answer that question. My goal for this project is to look at drinking trends and discover not what people consider heavy drinking, but how much people actually participate in drinking.
@@ -39,14 +34,49 @@ Drinking Frequency Chart:
 | 10 | Drink less than 1 time a year |
 | 11 | Never had a drink |
 
+
 # Goal
 The goal of this project is to build a model to predict a label for a 3-class engineered feature. The three classes will correspond to drinking frequency: 0 - Never drink; 1 - drinks occasionally(at most once a month); 2 - Drinks frequently(at least once a week). 
 
 
-
 # EDA
+
+### Drinking Trends by Ethnicity/Gender
+
+My initial analysis involved grouping the data by type of alcohol, to understand the drinking habits of different ethnicities, separated by gender. Seaborn is the tool that was used for the graphing. An interesting feature of seaborn is that the sample size effects the smoothness of the distribution. The smaller the sample, the smoother the curve(white is the highest sample size, therefor the most curvy)
+The unusual distributions in the Native American graphs is attributed to a very small sample size - only 14 of the 28000 participants were Native Americans.
+
+Here we have wine consumption. Of the 6 Native American men sampled, none drink wine. 
+![Ethnicity_Wine](/plots/Ethnicity_Wine2.png)
+
+Next is Beer consumption. Once again, the very limited sample of Native Americans results in an unusual distribution.
+![Ethnicity_Beer](/plots/Ethnicity_Beer.png)
+
+Finally, liquor consumption.
+![Ethnicity_Liquor](/plots/Ethnicity_Liquor.png)
+
+### Drinking Trends by State
+Next I explored the differences in drinking trends by state, again separated by alcohol type. This time the data was grouped by the individuals who drank 1-2 per week or more. All values from the drinking frequency chart that were 6 or less were grouped together, and a percentage of the total state sample was derived. Geopandas was used to plot the data on a map file to give an intuitive, immediate understanding of the data.
+Wine by State:
+![States_Wine](/plots/States_Wine.png)
+
+Beer by state:
+![States_Beer](/plots/States_Beer.png)
+
+Liquor by state:
+![States_Liquor](/plots/States_Liquor.png)
+
+
+### Drinking Trends by Age
+
+This graph compares the drinking trends of the two categories. The x values correlate to the values in the drinking frequency chart. The y values correlate to the percentage of people who chose each x value, represented by the density graph. The bar graph is simply a comparison of the the raw counts from each category, which is not related to the scale of the y values.
+![Age_Comparison](/plots/Age_Comparison.png)
+
+
+### Feature Selection for predictions
+
 After selection of features, each one was split into three groups corresponding to the target value to  visualize a difference in their distributions. The feature regarding the participants education, and also the his/her religion's opinions of alcohol seemed the most promising of the behavioral fetures.
-The values here range from 1-4, corresponding to level of importance. 1 means the participant felt it is very important, though 4, menaing not important at all.
+The values here range from 1-4, corresponding to level of importance. 1 means the participant felt it is very important, while 4 means it is not important at all.
 
 This was the most dramatic difference between the classes of drinkers. Of those who never drink, 57% answered that how their religion views alcohol is a very important reason to abstain from consumiung alcohol, while only 12% of frequent drinkers asnwered with a 1. 
 
@@ -69,7 +99,6 @@ The second step was to impute the missing values in a few columns. Given the nat
 After processing was done, the initial model was a Logisitc Regression model. The intial fit on the raw data shows a clear unbalance among the 2 classes(0 for never drinks, 1 for frequent drinker). The sample of non-drinkers is much larger than the other class, so it's favored by the model. To remedy this the data was balanced by resampling 35% more from the pool of the moniority class(frequent drinkers), while undersampling the majority class to the same number of samples. After this was done, the standard logistic regression model displayed more favorable numbers. 
 
 
-
 <div class="row">
   <div class="column">
     <img src="plots/Unbalanced_LR2.png" alt="Unbalanced Classes" style="width:100%">
@@ -80,10 +109,7 @@ After processing was done, the initial model was a Logisitc Regression model. Th
 </div> 
 
 
-
-
-After the baseline was established and the 2 class model showed an acceptable level of signal, the data was then split into 3 classes: 0 for never drinks(11), 1 for occasionaly drinks(7-9), and 2 for frequently drinks(1-6). Using balanced classes and a out-of-the-box gradient boostin model, I tested the accuracy with different values for the classes and found the best starting point for 3 classes was to split by drinking frequency 1-5, 8-9, and 11. This made a more distinct separation between classes. 
-
+After the baseline was established and the 2 class model showed an acceptable level of signal, the data was then split into 3 classes: 0 for never drinks(11), 1 for occasionaly drinks(7-9), and 2 for frequently drinks(1-6). Using balanced classes and a out-of-the-box gradient boosting model, I tested the accuracy with different values for the classes and found the best starting point for 3 classes was to split by drinking frequency 1-5, 8-9, and 11. This made a more distinct separation between classes. 
 
 
 <div class="row">
@@ -96,5 +122,7 @@ After the baseline was established and the 2 class model showed an acceptable le
 </div> 
 
 
+# Conclusion
+Predicting a 1(Occasional Drinkers) proved to be difficult. Most people I personally know fall into this category, so 50% accuracy is less than desirable. I'd like to use feature selection techniques to see if other features make more of a distinction, but with the amount of pre-processing that goes into every selected feature, this wasn't feasible. There is clear evidence of differences in drinkers characterstics, though, and this work has potential use in alcohol marketing.  
 
 
